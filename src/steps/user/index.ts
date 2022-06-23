@@ -1,6 +1,5 @@
 import {
   Entity,
-  getRawData,
   IntegrationStep,
   IntegrationStepExecutionContext,
 } from '@jupiterone/integration-sdk-core';
@@ -16,8 +15,6 @@ export async function fetchUsers({
   jobState,
 }: IntegrationStepExecutionContext<IntegrationConfig>) {
   const apiClient = createAPIClient(instance.config);
-
-  const accountEntity = (await jobState.getData(ACCOUNT_ENTITY_KEY)) as Entity;
 
   await jobState.iterateEntities(
     { _type: Entities.DEVICE._type },

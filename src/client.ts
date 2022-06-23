@@ -11,7 +11,6 @@ import {
   SimpleMDMDevice,
   SimpleMDMApplication,
   SimpleMDMUser,
-  SimpleMDMEntity,
 } from './types';
 
 export type ResourceIteratee<T> = (each: T) => Promise<void> | void;
@@ -80,7 +79,7 @@ export class APIClient {
     iterateeKey: string,
   ): Promise<void> {
     try {
-      let nextUri = null;
+      let nextUri: string | null = null;
       do {
         const response: SimpleMDMResponse = await this.request(
           nextUri || uri,

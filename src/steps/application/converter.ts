@@ -2,7 +2,6 @@ import {
   createDirectRelationship,
   createIntegrationEntity,
   Entity,
-  parseTimePropertyValue,
   Relationship,
   RelationshipClass,
 } from '@jupiterone/integration-sdk-core';

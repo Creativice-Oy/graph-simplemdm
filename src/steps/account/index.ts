@@ -4,7 +4,7 @@ import {
 } from '@jupiterone/integration-sdk-core';
 import { createAPIClient } from '../../client';
 import { IntegrationConfig } from '../../config';
-import { SimpleMDMDAccount, SimpleMDMResponse } from '../../types';
+import { SimpleMDMDAccount } from '../../types';
 import { Steps, Entities } from '../constants';
 import { createAccountEntity } from './converter';
 
