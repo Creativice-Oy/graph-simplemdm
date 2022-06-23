@@ -76,7 +76,6 @@ export class APIClient {
     uri: string,
     method: 'GET' | 'HEAD' = 'GET',
     iteratee: ResourceIteratee<T>,
-    iterateeKey: string,
   ): Promise<void> {
     try {
       let nextUri: string | null = null;
@@ -87,7 +86,7 @@ export class APIClient {
         );
         nextUri = response['has_more']
           ? `${uri}&starting_after=${
-              response[response.data.length - 1][iterateeKey]
+              response.data[response.data.length - 1].id
             }`
           : null;
         for (const item of response.data) {
@@ -138,7 +137,6 @@ export class APIClient {
       this.withBaseUri(`/api/v1/apps?limit=${this.perPage}`),
       'GET',
       iteratee,
-      'id',
     );
   }
 
@@ -154,7 +152,6 @@ export class APIClient {
       this.withBaseUri(`/api/v1/devices?limit=${this.perPage}`),
       'GET',
       iteratee,
-      'id',
     );
   }
 
@@ -173,7 +170,6 @@ export class APIClient {
       ),
       'GET',
       iteratee,
-      'id',
     );
   }
 }
