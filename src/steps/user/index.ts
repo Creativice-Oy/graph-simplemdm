@@ -33,7 +33,7 @@ export const userSteps: IntegrationStep<IntegrationConfig>[] = [
     id: Steps.USERS,
     name: 'Fetch Users',
     entities: [Entities.USER],
-    relationships: [Relationships.DEVICE_HAS_USER],
+    relationships: [Relationships.USER_USES_DEVICE],
     dependsOn: [Steps.DEVICES],
     executionHandler: fetchUsers,
   },
