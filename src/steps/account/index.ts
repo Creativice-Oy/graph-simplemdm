@@ -2,9 +2,10 @@ import {
   IntegrationStep,
   IntegrationStepExecutionContext,
 } from '@jupiterone/integration-sdk-core';
+
 import { createAPIClient } from '../../client';
 import { IntegrationConfig } from '../../config';
-import { SimpleMDMDAccount } from '../../types';
+import { SimpleMDMAccount } from '../../types';
 import { Steps, Entities } from '../constants';
 import { createAccountEntity } from './converter';
 
@@ -15,7 +16,7 @@ export async function fetchAccountDetails({
   jobState,
 }: IntegrationStepExecutionContext<IntegrationConfig>) {
   const apiClient = createAPIClient(instance.config);
-  const account: SimpleMDMDAccount = await apiClient.fetchAccount();
+  const account: SimpleMDMAccount = await apiClient.fetchAccount();
 
   const accountEntity = await jobState.addEntity(createAccountEntity(account));
   await jobState.setData(ACCOUNT_ENTITY_KEY, accountEntity);

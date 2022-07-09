@@ -1,5 +1,5 @@
 {
-  "name": "@jupiterone/graph-simlemdm",
+  "name": "@jupiterone/graph-simplemdm",
   "version": "0.0.0",
   "description": "A JupiterOne Integration for ingesting data of the SimpleMDM API",
   "license": "MPL-2.0",

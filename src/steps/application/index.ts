@@ -18,7 +18,6 @@ export async function fetchApplications({
   jobState,
 }: IntegrationStepExecutionContext<IntegrationConfig>) {
   const apiClient = createAPIClient(instance.config);
-
   const accountEntity = (await jobState.getData(ACCOUNT_ENTITY_KEY)) as Entity;
 
   await apiClient.iterateApplications(async (app) => {

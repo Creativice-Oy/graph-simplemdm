@@ -4,10 +4,11 @@ import {
   IntegrationProviderAPIError,
   IntegrationProviderAuthenticationError,
 } from '@jupiterone/integration-sdk-core';
+
 import { IntegrationConfig } from './config';
 import {
   SimpleMDMResponse,
-  SimpleMDMDAccount,
+  SimpleMDMAccount,
   SimpleMDMDevice,
   SimpleMDMApplication,
   SimpleMDMUser,
@@ -20,9 +21,10 @@ export class APIClient {
 
   private perPage = 100;
   private baseUri = `https://a.simplemdm.com`;
-  private encodedApiKey = Buffer.from(this.config.apiKey + `:`).toString(
+  private encodedApiKey = Buffer.from(this.config.apiKey + ':').toString(
     'base64',
   );
+
   private withBaseUri = (path: string) => `${this.baseUri}${path}`;
 
   private checkStatus = (response: Response) => {
@@ -120,9 +122,8 @@ export class APIClient {
   /**
    * Fetch the account resource in the provider.
    */
-  public async fetchAccount(): Promise<SimpleMDMDAccount> {
-    const res = await this.request(this.withBaseUri(`/api/v1/account`), 'GET');
-    return res;
+  public async fetchAccount(): Promise<SimpleMDMAccount> {
+    return this.request(this.withBaseUri(`/api/v1/account`), 'GET');
   }
 
   /**
@@ -145,7 +146,7 @@ export class APIClient {
    *
    * @param iteratee receives each resource to produce entities/relationships
    */
-  public async iterateDatabases(
+  public async iterateDevices(
     iteratee: ResourceIteratee<SimpleMDMDevice>,
   ): Promise<void> {
     await this.paginatedRequest<SimpleMDMDevice>(

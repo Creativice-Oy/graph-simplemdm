@@ -8,7 +8,7 @@ export interface SimpleMDMEntity {
   id: number;
 }
 
-export interface SimpleMDMDAccount {
+export interface SimpleMDMAccount {
   data: {
     attributes: {
       name: string;

@@ -9,8 +9,8 @@ import {
 import { Entities } from '../constants';
 import { SimpleMDMApplication } from '../../types';
 
-export function getRoleKey(id: number): string {
-  return `simplemdm_role:${id}`;
+export function getApplicationKey(id: number): string {
+  return `simplemdm_application:${id}`;
 }
 
 export function createApplicationEntity(app: SimpleMDMApplication): Entity {
@@ -20,7 +20,7 @@ export function createApplicationEntity(app: SimpleMDMApplication): Entity {
       assign: {
         _type: Entities.APPLICATION._type,
         _class: Entities.APPLICATION._class,
-        _key: getRoleKey(app.id),
+        _key: getApplicationKey(app.id),
         id: app.id.toString(),
         name: app.attributes.name,
         appType: app.attributes.app_type,

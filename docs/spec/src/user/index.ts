@@ -18,10 +18,10 @@ export const userSpec: StepSpec<IntegrationConfig>[] = [
     ],
     relationships: [
       {
-        _type: 'simplemdm_user_uses_device',
-        sourceType: 'simplemdm_user',
-        _class: RelationshipClass.USES,
-        targetType: 'simplemdm_device',
+        _type: 'simplemdm_device_has_user',
+        sourceType: 'simplemdm_device',
+        _class: RelationshipClass.HAS,
+        targetType: 'simplemdm_user',
       },
     ],
     dependsOn: ['fetch-devices'],

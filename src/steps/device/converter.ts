@@ -14,7 +14,7 @@ export function getDeviceKey(id: number): string {
   return `simplemdm_device:${id}`;
 }
 
-export function createDatabaseEntity(device: SimpleMDMDevice): Entity {
+export function createDeviceEntity(device: SimpleMDMDevice): Entity {
   const lastSeenAt = parseTimePropertyValue(device.attributes.last_seen_at);
 
   return createIntegrationEntity({
@@ -29,7 +29,10 @@ export function createDatabaseEntity(device: SimpleMDMDevice): Entity {
         name: device.attributes.name,
         lastSeenAt: lastSeenAt && lastSeenAt > 0 ? lastSeenAt : undefined,
         lastSeenIp: device.attributes.last_seen_ip,
-        status: device.attributes.status == `enrolled` ? `assigned` : `other`,
+        status:
+          device.attributes.status == 'enrolled'
+            ? 'assigned'
+            : device.attributes.status,
         enrollmentChannels: device.attributes.enrollment_channels,
         deviceName: device.attributes.device_name,
         osVersion: device.attributes.os_version,

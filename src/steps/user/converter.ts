@@ -42,8 +42,8 @@ export function createDeviceUserRelationship(
   user: Entity,
 ): Relationship {
   return createDirectRelationship({
-    _class: RelationshipClass.USES,
-    from: user,
-    to: device,
+    _class: RelationshipClass.HAS,
+    from: device,
+    to: user,
   });
 }

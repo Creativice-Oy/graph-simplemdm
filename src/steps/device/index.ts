@@ -9,7 +9,7 @@ import { IntegrationConfig } from '../../config';
 import { ACCOUNT_ENTITY_KEY } from '../account';
 import { Entities, Steps, Relationships } from '../constants';
 import {
-  createDatabaseEntity,
+  createDeviceEntity,
   createAccountDeviceRelationship,
 } from './converter';
 
@@ -19,17 +19,13 @@ export async function fetchDevices({
 }: IntegrationStepExecutionContext<IntegrationConfig>) {
   const apiClient = createAPIClient(instance.config);
 
-  const organizationEntity = (await jobState.getData(
-    ACCOUNT_ENTITY_KEY,
-  )) as Entity;
+  const accountEntity = (await jobState.getData(ACCOUNT_ENTITY_KEY)) as Entity;
 
-  await apiClient.iterateDatabases(async (database) => {
-    const databaseEntity = await jobState.addEntity(
-      createDatabaseEntity(database),
-    );
+  await apiClient.iterateDevices(async (device) => {
+    const deviceEntity = await jobState.addEntity(createDeviceEntity(device));
 
     await jobState.addRelationship(
-      createAccountDeviceRelationship(organizationEntity, databaseEntity),
+      createAccountDeviceRelationship(accountEntity, deviceEntity),
     );
   });
 }

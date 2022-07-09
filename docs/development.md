@@ -8,9 +8,9 @@ with the Datastax resources.
 
 1. Sign-up for a SimpleMDM account
 2. In the dashboard, under Account, click API
-3. Click Add API Key
+3. Click "Add API Key"
 4. Provide a name for the API Key
-5. Set the permission for the following roles `read` and `none` for the rest:
+5. The following permissions should have roles set to `read`:
 
    - Account
    - Apps
@@ -18,7 +18,7 @@ with the Datastax resources.
 
 6. Click Save
 7. Under Secret Access Key, click `reveal` and save the details. This will serve
-   as your API Key
+   as your API Key.
 
 ## Authentication
 

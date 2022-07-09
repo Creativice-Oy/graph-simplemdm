@@ -38,7 +38,7 @@ export const Entities: Record<
 };
 
 export const Relationships: Record<
-  'ACCOUNT_HAS_APPLICATION' | 'ACCOUNT_HAS_DEVICE' | 'USER_USES_DEVICE',
+  'ACCOUNT_HAS_APPLICATION' | 'ACCOUNT_HAS_DEVICE' | 'DEVICE_HAS_USER',
   StepRelationshipMetadata
 > = {
   ACCOUNT_HAS_APPLICATION: {
@@ -53,10 +53,10 @@ export const Relationships: Record<
     _class: RelationshipClass.HAS,
     targetType: Entities.DEVICE._type,
   },
-  USER_USES_DEVICE: {
-    _type: 'simplemdm_user_uses_device',
-    sourceType: Entities.USER._type,
-    _class: RelationshipClass.USES,
-    targetType: Entities.DEVICE._type,
+  DEVICE_HAS_USER: {
+    _type: 'simplemdm_device_has_user',
+    sourceType: Entities.DEVICE._type,
+    _class: RelationshipClass.HAS,
+    targetType: Entities.USER._type,
   },
 };

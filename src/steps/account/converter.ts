@@ -2,8 +2,8 @@ import {
   createIntegrationEntity,
   Entity,
 } from '@jupiterone/integration-sdk-core';
-import { SimpleMDMDAccount } from '../../types';
 
+import { SimpleMDMAccount } from '../../types';
 import { Entities } from '../constants';
 
 export function getAccountKey(name: string): string {
@@ -11,7 +11,7 @@ export function getAccountKey(name: string): string {
   return `simplemdm_account:${formattedName}`;
 }
 
-export function createAccountEntity(account: SimpleMDMDAccount): Entity {
+export function createAccountEntity(account: SimpleMDMAccount): Entity {
   return createIntegrationEntity({
     entityData: {
       source: account,
